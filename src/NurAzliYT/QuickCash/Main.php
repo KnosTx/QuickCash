@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * This Plugin Created By NurAzliYT
+ * Plagiarism of Other People's Work is Prohibited
+ * Except Asking Permission From The Creator
+ */
 namespace NurAzliYT\QuickCash;
 
 use pocketmine\plugin\PluginBase;
