@@ -30,13 +30,13 @@ commands:
     permission-message: Only the console can use this command
   setmoney:
     description: Sets a player's money
-    permission: quickcash.admin
+    permission: quickcash.command.setmoney
   givemoney:
     description: Gives money to a player
-    permission: quickcash.admin
+    permission: quickcash.command.givemoney
   takemoney:
     description: Takes money from a player
-    permission: quickcash.admin
+    permission: quickcash.command.takemoney
   seemoney:
     description: Shows a player's money
     permission: quickcash.command.seemoney
@@ -65,6 +65,12 @@ permissions:
   quickcash.command.seemoney:
     description: Allows the player to see another player's money
     default: true
-  quickcash.admin:
-    description: Allows the player to manage money
+  quickcash.command.setmoney:
+    description: Allows the operator to set player's money
+    default: op
+  quickcash.command.givemoney:
+    description: Allows the operator to give money to a player
+    default: op
+  quickcash.command.takemoney:
+    description: Allows the operator to take money from a player
     default: op
