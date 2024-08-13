@@ -15,7 +15,6 @@ use NurAzliYT\QuickCash\command\MyMoneyCommand;
 use NurAzliYT\QuickCash\command\MyDebtCommand;
 use NurAzliYT\QuickCash\command\TakeDebtCommand;
 use NurAzliYT\QuickCash\command\ReturnDebtCommand;
-use NurAzliYT\QuickCash\command\TopMoneyCommand;
 use NurAzliYT\QuickCash\command\MoneySaveCommand;
 use NurAzliYT\QuickCash\command\MoneyLoadCommand;
 use NurAzliYT\QuickCash\command\SetMoneyCommand;
@@ -42,7 +41,6 @@ class Main extends PluginBase {
             new MyDebtCommand($this),
             new TakeDebtCommand($this),
             new ReturnDebtCommand($this),
-            new TopMoneyCommand($this),
             new MoneySaveCommand($this),
             new MoneyLoadCommand($this),
             new SetMoneyCommand($this),
