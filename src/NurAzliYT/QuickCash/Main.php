@@ -3,28 +3,47 @@
 namespace NurAzliYT\QuickCash;
 
 use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
 use NurAzliYT\QuickCash\api\QuickCashAPI;
-use NurAzliYT\QuickCash\commands\{SetCashCommand, SeeCashCommand, AddCashCommand, RemoveCashCommand, PayCommand, ResetCashCommand, TopCashCommand};
+use NurAzliYT\QuickCash\commands\{SetCashCommand, SeeCashCommand, AddCashCommand, RemoveCashCommand, PayCommand, ResetCashCommand};
 
 class Main extends PluginBase {
 
-    private static $qcAPI;
+    private Config $config;
 
     public function onEnable(): void {
-        self::$qcAPI = new QuickCashAPI();
+        // Memuat konfigurasi
+        $this->saveDefaultConfig();
+        $this->config = $this->getConfig();
 
-        $this->getServer()->getCommandMap()->registerAll("quickcash", [
-            new SetCashCommand(),
-            new SeeCashCommand(),
-            new AddCashCommand(),
-            new RemoveCashCommand(),
-            new PayCommand(),
-            new ResetCashCommand(),
-            new TopCashCommand(),
+        // Daftarkan command dengan namespace kosong
+        $this->getServer()->getCommandMap()->registerAll(null, [
+            new SetCashCommand($this),
+            new SeeCashCommand($this),
+            new AddCashCommand($this),
+            new RemoveCashCommand($this),
+            new PayCommand($this),
+            new ResetCashCommand($this)
         ]);
     }
 
-    public static function getAPI(): QuickCashAPI {
-        return self::$qcAPI;
+    public function getConfigValue(string $key, $default = null) {
+        return $this->config->get($key, $default);
+    }
+
+    public function getCurrencyName(): string {
+        return $this->getConfigValue("currency-name", "Cash");
+    }
+
+    public function getDefaultBalance(): int {
+        return $this->getConfigValue("default-balance", 1000);
+    }
+
+    public function getMaxBalance(): int {
+        return $this->getConfigValue("max-balance", 1000000);
+    }
+
+    public function getAPI(): QuickCashAPI {
+        return new QuickCashAPI($this);
     }
 }
