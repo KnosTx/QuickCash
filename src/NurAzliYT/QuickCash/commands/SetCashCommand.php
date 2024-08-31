@@ -12,8 +12,10 @@ use NurAzliYT\QuickCash\Main;
 class SetCashCommand extends Command implements PluginOwned {
     use PluginOwnedTrait;
 
+    private Main $plugin;
+
     public function __construct(Main $plugin) {
-        parent::__construct("setcash", "Set uang untuk pemain", "/setcash <player> <amount>", []);
+        parent::__construct("setcash", "Set the amount of cash for a player", "/setcash <player> <amount>", []);
         $this->setPermission("quickcash.command.setcash");
         $this->owningPlugin = $plugin;
     }
@@ -36,12 +38,6 @@ class SetCashCommand extends Command implements PluginOwned {
 
         $amount = (int) $args[1];
         $plugin = $this->owningPlugin;
-
-        if ($amount > $plugin->getMaxBalance()) {
-            $sender->sendMessage("Amount exceeds maximum balance of " . $plugin->getMaxBalance());
-            return false;
-        }
-
         $plugin->getAPI()->setCash($target, $amount);
         $sender->sendMessage("Set {$target->getName()}'s cash to $amount " . $plugin->getCurrencyName());
         return true;
