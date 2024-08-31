@@ -5,7 +5,7 @@ namespace NurAzliYT\QuickCash;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use NurAzliYT\QuickCash\api\QuickCashAPI;
-use NurAzliYT\QuickCash\commands\{SetCashCommand, SeeCashCommand, AddCashCommand, RemoveCashCommand, PayCommand, ResetCashCommand};
+use NurAzliYT\QuickCash\commands\{SetCashCommand, SeeCashCommand, AddCashCommand, RemoveCashCommand, PayCommand};
 
 class Main extends PluginBase {
 
@@ -22,8 +22,7 @@ class Main extends PluginBase {
             new SeeCashCommand($this),
             new AddCashCommand($this),
             new RemoveCashCommand($this),
-            new PayCommand($this),
-            new ResetCashCommand($this)
+            new PayCommand($this)
         ]);
     }
 
