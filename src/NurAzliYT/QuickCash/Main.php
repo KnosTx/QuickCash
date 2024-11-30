@@ -5,6 +5,7 @@ namespace NurAzliYT\QuickCash;
 use pocketmine\plugin\PluginBase;
 use pocketmine\plugin\PluginDescription;
 use pocketmine\plugin\PluginLoader;
+use pocketmine\plugin\PluginLogger;
 use pocketmine\plugin\ResourceProvider;
 use pocketmine\scheduler\TaskScheduler;
 use pocketmine\Server;
