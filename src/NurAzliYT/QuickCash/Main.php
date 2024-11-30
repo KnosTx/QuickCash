@@ -11,7 +11,7 @@ class Main extends PluginBase{
 
     private Config $config;
 
-    public function __construct(){
+    public function __construct($loader, $server, $description, $dataFolder, $file, $resourceProvider){
         parent::__construct();
     }
 
